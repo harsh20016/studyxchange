@@ -1,0 +1,418 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Post Ad - StudyXchange</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="../css/styles.css">
+    <link rel="stylesheet" href="../css/responsive.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="../index.html">
+                    <span class="brand-name">StudyXchange</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="search-container mx-auto">
+                        <div class="input-group">
+                            <input type="text" id="searchInput" class="form-control" placeholder="Search study materials...">
+                            <button class="btn btn-primary" type="button" id="searchButton">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="login.html">
+                                <i class="fas fa-user"></i> Login
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link active" href="post-ad.html">
+                                <i class="fas fa-plus-circle"></i> Post Ad
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="profile.html">
+                                <i class="fas fa-user-circle"></i> My Account
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Breadcrumb Section -->
+    <section class="breadcrumb-section">
+        <div class="container">
+            <nav aria-label="breadcrumb">
+                <ol class="breadcrumb">
+                    <li class="breadcrumb-item"><a href="../index.html">Home</a></li>
+                    <li class="breadcrumb-item active" aria-current="page">Post Ad</li>
+                </ol>
+            </nav>
+        </div>
+    </section>
+
+    <!-- Post Ad Section -->
+    <section class="post-ad-section">
+        <div class="container">
+            <div class="post-ad-container">
+                <div class="post-ad-header">
+                    <h2>Post Your Ad</h2>
+                    <p>Fill out the form below to post your study material for sale or exchange.</p>
+                </div>
+                
+                <form id="postAdForm">
+                    <!-- Title & Price -->
+                    <div class="row">
+                        <div class="col-md-8 mb-3">
+                            <label for="title" class="form-label">Title*</label>
+                            <input type="text" class="form-control" id="title" placeholder="Enter a descriptive title" required>
+                            <div class="form-text">Be specific and include key details about your item</div>
+                        </div>
+                        <div class="col-md-4 mb-3">
+                            <label for="price" class="form-label">Price ($)*</label>
+                            <input type="number" class="form-control" id="price" min="0" step="0.01" placeholder="Enter price" required>
+                        </div>
+                    </div>
+                    
+                    <!-- Categories -->
+                    <div class="row">
+                        <div class="col-md-6 mb-3">
+                            <label for="category" class="form-label">Category*</label>
+                            <select class="form-select" id="category" required>
+                                <option value="" selected disabled>Select a category</option>
+                                <option value="textbooks">Textbooks</option>
+                                <option value="notes">Notes</option>
+                                <option value="stationery">Stationery</option>
+                                <option value="electronics">Electronics</option>
+                                <option value="equipment">Lab Equipment</option>
+                                <option value="courses">Course Materials</option>
+                            </select>
+                        </div>
+                        <div class="col-md-6 mb-3">
+                            <label for="subcategory" class="form-label">Subcategory</label>
+                            <input type="text" class="form-control" id="subcategory" placeholder="e.g., Mathematics, Biology, etc.">
+                        </div>
+                    </div>
+                    
+                    <!-- Condition -->
+                    <div class="mb-3">
+                        <label class="form-label">Condition*</label>
+                        <div class="d-flex flex-wrap">
+                            <div class="form-check me-4 mb-2">
+                                <input class="form-check-input" type="radio" name="condition" id="conditionNew" value="New" required>
+                                <label class="form-check-label" for="conditionNew">New</label>
+                            </div>
+                            <div class="form-check me-4 mb-2">
+                                <input class="form-check-input" type="radio" name="condition" id="conditionLikeNew" value="Like New">
+                                <label class="form-check-label" for="conditionLikeNew">Like New</label>
+                            </div>
+                            <div class="form-check me-4 mb-2">
+                                <input class="form-check-input" type="radio" name="condition" id="conditionGood" value="Good">
+                                <label class="form-check-label" for="conditionGood">Good</label>
+                            </div>
+                            <div class="form-check me-4 mb-2">
+                                <input class="form-check-input" type="radio" name="condition" id="conditionFair" value="Fair">
+                                <label class="form-check-label" for="conditionFair">Fair</label>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Description -->
+                    <div class="mb-3">
+                        <label for="description" class="form-label">Description*</label>
+                        <textarea class="form-control" id="description" rows="5" placeholder="Provide detailed information about your item" required></textarea>
+                        <div class="form-text">Include details like edition, author, subject, and any other relevant information</div>
+                    </div>
+                    
+                    <!-- Location -->
+                    <div class="mb-3">
+                        <label for="location" class="form-label">Location*</label>
+                        <input type="text" class="form-control" id="location" placeholder="Enter your university/college name" required>
+                    </div>
+                    
+                    <!-- Images -->
+                    <div class="mb-4">
+                        <label class="form-label">Images</label>
+                        <div class="input-group mb-3">
+                            <input type="file" class="form-control" id="imageUpload" accept="image/*" multiple>
+                            <label class="input-group-text" for="imageUpload">Upload</label>
+                        </div>
+                        <div class="form-text mb-2">Upload clear images of your item (max 5 images)</div>
+                        
+                        <div class="image-preview-container" id="imagePreviewContainer">
+                            <div class="image-preview">
+                                <i class="fas fa-image"></i>
+                            </div>
+                            <div class="image-preview">
+                                <i class="fas fa-image"></i>
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Contact Info -->
+                    <div class="mb-4">
+                        <h5>Contact Information</h5>
+                        <div class="row">
+                            <div class="col-md-6 mb-3">
+                                <label for="contactEmail" class="form-label">Email*</label>
+                                <input type="email" class="form-control" id="contactEmail" placeholder="Enter your email" required>
+                            </div>
+                            <div class="col-md-6 mb-3">
+                                <label for="contactPhone" class="form-label">Phone Number</label>
+                                <input type="tel" class="form-control" id="contactPhone" placeholder="Enter your phone number">
+                            </div>
+                        </div>
+                    </div>
+                    
+                    <!-- Terms -->
+                    <div class="mb-4">
+                        <div class="form-check">
+                            <input class="form-check-input" type="checkbox" id="termsCheck" required>
+                            <label class="form-check-label" for="termsCheck">
+                                I agree to the <a href="#" data-bs-toggle="modal" data-bs-target="#termsModal">Terms and Conditions</a> and <a href="#" data-bs-toggle="modal" data-bs-target="#privacyModal">Privacy Policy</a>
+                            </label>
+                        </div>
+                    </div>
+                    
+                    <!-- Submit Button -->
+                    <div class="d-grid gap-2">
+                        <button type="submit" class="btn btn-primary btn-lg" id="postAdButton">Post Ad</button>
+                    </div>
+                </form>
+            </div>
+        </div>
+    </section>
+
+    <!-- Terms Modal -->
+    <div class="modal fade" id="termsModal" tabindex="-1" aria-labelledby="termsModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="termsModalLabel">Terms and Conditions</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>1. Introduction</h6>
+                    <p>By using StudyXchange, you agree to these terms and conditions. Please read them carefully.</p>
+                    
+                    <h6>2. Listings and Transactions</h6>
+                    <p>Users are solely responsible for the content of their listings and the completion of any transactions. StudyXchange serves only as a platform to connect buyers and sellers.</p>
+                    
+                    <h6>3. Prohibited Items</h6>
+                    <p>The following items are prohibited on StudyXchange:</p>
+                    <ul>
+                        <li>Counterfeit or unauthorized copies of textbooks or materials</li>
+                        <li>Digital copies of copyrighted materials without proper authorization</li>
+                        <li>Exam answers or completed assignments</li>
+                        <li>Any items that violate university policies or laws</li>
+                    </ul>
+                    
+                    <h6>4. User Conduct</h6>
+                    <p>Users must conduct themselves in a respectful manner when using the platform and must not engage in harassment, fraud, or any illegal activities.</p>
+                    
+                    <h6>5. Account Termination</h6>
+                    <p>StudyXchange reserves the right to terminate any account that violates these terms or engages in suspicious activity.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Privacy Modal -->
+    <div class="modal fade" id="privacyModal" tabindex="-1" aria-labelledby="privacyModalLabel" aria-hidden="true">
+        <div class="modal-dialog modal-dialog-scrollable">
+            <div class="modal-content">
+                <div class="modal-header">
+                    <h5 class="modal-title" id="privacyModalLabel">Privacy Policy</h5>
+                    <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                </div>
+                <div class="modal-body">
+                    <h6>1. Information We Collect</h6>
+                    <p>We collect information such as your name, email, phone number, and location to facilitate transactions on our platform.</p>
+                    
+                    <h6>2. How We Use Your Information</h6>
+                    <p>We use your information to:</p>
+                    <ul>
+                        <li>Create and manage your account</li>
+                        <li>Connect buyers and sellers</li>
+                        <li>Improve our services</li>
+                        <li>Send notifications about transactions</li>
+                    </ul>
+                    
+                    <h6>3. Information Sharing</h6>
+                    <p>We share your information with other users only as necessary to facilitate transactions. We do not sell your data to third parties.</p>
+                    
+                    <h6>4. Data Security</h6>
+                    <p>We implement reasonable security measures to protect your personal information.</p>
+                    
+                    <h6>5. Your Rights</h6>
+                    <p>You have the right to access, correct, or delete your personal information. Contact us at support@studyxchange.com for assistance.</p>
+                </div>
+                <div class="modal-footer">
+                    <button type="button" class="btn btn-secondary" data-bs-dismiss="modal">Close</button>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5>StudyXchange</h5>
+                    <p>The best platform for students to buy, sell, and exchange study materials.</p>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="../index.html" class="text-white">Home</a></li>
+                        <li><a href="category.html" class="text-white">Categories</a></li>
+                        <li><a href="post-ad.html" class="text-white">Post Ad</a></li>
+                        <li><a href="profile.html" class="text-white">My Account</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <h5>Popular Categories</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="category.html?category=textbooks" class="text-white">Textbooks</a></li>
+                        <li><a href="category.html?category=notes" class="text-white">Notes</a></li>
+                        <li><a href="category.html?category=electronics" class="text-white">Electronics</a></li>
+                        <li><a href="category.html?category=courses" class="text-white">Course Materials</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope me-2"></i> support@studyxchange.com</li>
+                        <li><i class="fas fa-phone me-2"></i> +1 234 567 8900</li>
+                        <li class="mt-3">
+                            <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-white me-2"><i class="fab fa-linkedin-in"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2023 StudyXchange. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="../js/data.js"></script>
+    <script src="../js/search.js"></script>
+    <script src="../js/favorites.js"></script>
+    <script src="../js/app.js"></script>
+    <script>
+        document.addEventListener('DOMContentLoaded', function() {
+            // Form submission
+            const postAdForm = document.getElementById('postAdForm');
+            if (postAdForm) {
+                postAdForm.addEventListener('submit', function(e) {
+                    e.preventDefault();
+                    
+                    // Get form values
+                    const title = document.getElementById('title').value;
+                    const price = document.getElementById('price').value;
+                    const category = document.getElementById('category').value;
+                    const subcategory = document.getElementById('subcategory').value;
+                    const condition = document.querySelector('input[name="condition"]:checked').value;
+                    const description = document.getElementById('description').value;
+                    const location = document.getElementById('location').value;
+                    const email = document.getElementById('contactEmail').value;
+                    const phone = document.getElementById('contactPhone').value;
+                    
+                    // Since this is frontend-only, we'll show a success message
+                    // and redirect to the profile page
+                    alert('Your ad has been posted successfully!');
+                    window.location.href = 'profile.html';
+                });
+            }
+            
+            // Image upload preview
+            const imageUpload = document.getElementById('imageUpload');
+            const imagePreviewContainer = document.getElementById('imagePreviewContainer');
+            
+            if (imageUpload && imagePreviewContainer) {
+                imageUpload.addEventListener('change', function() {
+                    // Clear existing previews
+                    imagePreviewContainer.innerHTML = '';
+                    
+                    // Limit to 5 images
+                    const files = Array.from(this.files).slice(0, 5);
+                    
+                    if (files.length === 0) {
+                        // Add default placeholders if no files selected
+                        imagePreviewContainer.innerHTML = `
+                            <div class="image-preview">
+                                <i class="fas fa-image"></i>
+                            </div>
+                            <div class="image-preview">
+                                <i class="fas fa-image"></i>
+                            </div>
+                        `;
+                        return;
+                    }
+                    
+                    // Create preview for each file
+                    files.forEach(file => {
+                        const preview = document.createElement('div');
+                        preview.className = 'image-preview';
+                        
+                        // Since we can't actually load the image in this demo, we'll show an icon
+                        preview.innerHTML = `
+                            <i class="fas fa-file-image"></i>
+                            <div class="remove-image">
+                                <i class="fas fa-times"></i>
+                            </div>
+                        `;
+                        
+                        // Add remove functionality
+                        const removeBtn = preview.querySelector('.remove-image');
+                        removeBtn.addEventListener('click', function() {
+                            preview.remove();
+                            
+                            // If no previews left, add default placeholders
+                            if (imagePreviewContainer.children.length === 0) {
+                                imagePreviewContainer.innerHTML = `
+                                    <div class="image-preview">
+                                        <i class="fas fa-image"></i>
+                                    </div>
+                                    <div class="image-preview">
+                                        <i class="fas fa-image"></i>
+                                    </div>
+                                `;
+                            }
+                        });
+                        
+                        imagePreviewContainer.appendChild(preview);
+                    });
+                });
+            }
+        });
+    </script>
+</body>
+</html>
