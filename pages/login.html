@@ -178,42 +178,7 @@
     <script src="../js/data.js"></script>
     <script src="../js/search.js"></script>
     <script src="../js/favorites.js"></script>
+    <script src="../js/login.js"></script>
     <script src="../js/app.js"></script>
-    <script>
-        document.addEventListener('DOMContentLoaded', function() {
-            // Form submission
-            const loginForm = document.getElementById('loginForm');
-            if (loginForm) {
-                loginForm.addEventListener('submit', function(e) {
-                    e.preventDefault();
-                    
-                    // Get form values
-                    const email = document.getElementById('email').value;
-                    const password = document.getElementById('password').value;
-                    
-                    // Since this is frontend-only, we'll simulate a successful login
-                    // by redirecting to the profile page
-                    
-                    // Check if the email matches any of our mock users
-                    let matchedUser = null;
-                    for (const user of users) {
-                        if (user.email === email) {
-                            matchedUser = user;
-                            break;
-                        }
-                    }
-                    
-                    if (matchedUser) {
-                        // Simulate successful login
-                        alert('Login successful! Welcome back, ' + matchedUser.name);
-                        window.location.href = 'profile.html';
-                    } else {
-                        // Simulate login failure
-                        alert('Login failed. Please check your email and password.');
-                    }
-                });
-            }
-        });
-    </script>
 </body>
 </html>
