@@ -1,6 +1,7 @@
 from app import db
 from flask_login import UserMixin
 from datetime import datetime
+from werkzeug.security import generate_password_hash, check_password_hash
 
 
 class User(UserMixin, db.Model):
@@ -12,6 +13,7 @@ class User(UserMixin, db.Model):
     phone = db.Column(db.String(20))
     avatar = db.Column(db.String(255))  # Path to user avatar image
     created_at = db.Column(db.DateTime, default=datetime.utcnow)
+    user_type = db.Column(db.String(20), default='buyer')  # 'buyer', 'seller', 'admin'
     
     # Relationships
     listings = db.relationship('Listing', backref='seller', lazy='dynamic')
@@ -20,6 +22,18 @@ class User(UserMixin, db.Model):
                                   foreign_keys='Message.sender_id', lazy='dynamic')
     received_messages = db.relationship('Message', backref='recipient', 
                                       foreign_keys='Message.recipient_id', lazy='dynamic')
+    
+    def set_password(self, password):
+        self.password_hash = generate_password_hash(password)
+        
+    def check_password(self, password):
+        return check_password_hash(self.password_hash, password)
+        
+    def is_admin(self):
+        return self.user_type == 'admin'
+        
+    def is_seller(self):
+        return self.user_type == 'seller'
 
 
 class Listing(db.Model):
