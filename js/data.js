@@ -185,6 +185,129 @@ const products = [
     }
 ];
 
+const sampleProducts = [
+    {
+        id: 1,
+        title: "Chemistry Textbook - 10th Grade",
+        description: "Comprehensive chemistry textbook with practice problems and solutions",
+        price: 45.99,
+        category: "textbooks",
+        condition: "like-new",
+        seller: "John Doe",
+        image: "https://via.placeholder.com/200x300"
+    },
+    {
+        id: 2,
+        title: "Physics Lab Notes",
+        description: "Detailed notes from Physics 101 lab experiments",
+        price: 15.00,
+        category: "notes",
+        condition: "good",
+        seller: "Jane Smith",
+        image: "https://via.placeholder.com/200x300"
+    },
+    {
+        id: 3,
+        title: "Scientific Calculator",
+        description: "Texas Instruments TI-84 Plus, perfect for advanced math",
+        price: 75.00,
+        category: "electronics",
+        condition: "good",
+        seller: "Mike Johnson",
+        image: "https://via.placeholder.com/200x300"
+    },
+    {
+        id: 4,
+        title: "Biology Lab Equipment Set",
+        description: "Complete set of basic biology lab equipment",
+        price: 120.00,
+        category: "equipment",
+        condition: "new",
+        seller: "Sarah Wilson",
+        image: "https://via.placeholder.com/200x300"
+    }
+];
+
+// Function to load products
+function loadProducts(container) {
+    const productContainer = document.getElementById(container);
+    if (!productContainer) return;
+
+    sampleProducts.forEach(product => {
+        const productCard = `
+            <div class="col-md-4 mb-4">
+                <div class="card h-100">
+                    <img src="${product.image}" class="card-img-top" alt="${product.title}">
+                    <div class="card-body">
+                        <h5 class="card-title">${product.title}</h5>
+                        <p class="card-text">${product.description}</p>
+                        <p class="card-text">
+                            <small class="text-muted">
+                                Category: ${product.category}<br>
+                                Condition: ${product.condition}<br>
+                                Seller: ${product.seller}
+                            </small>
+                        </p>
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h6 class="mb-0">$${product.price}</h6>
+                            <button class="btn btn-primary add-to-cart" data-product-id="${product.id}">
+                                Add to Cart
+                            </button>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        `;
+        productContainer.innerHTML += productCard;
+    });
+
+    // Add event listeners for cart buttons
+    document.querySelectorAll('.add-to-cart').forEach(button => {
+        button.addEventListener('click', function() {
+            const productId = this.getAttribute('data-product-id');
+            addToCart(productId);
+        });
+    });
+}
+
+// Function to add items to cart
+function addToCart(productId) {
+    const token = localStorage.getItem('token');
+    if (!token) {
+        window.location.href = 'pages/login.html';
+        return;
+    }
+
+    const product = sampleProducts.find(p => p.id == productId);
+    if (!product) return;
+
+    // Call the API to add to cart
+    fetch('https://studyxchange-backend.onrender.com/api/cart', {
+        method: 'POST',
+        headers: {
+            'Content-Type': 'application/json',
+            'Authorization': `Bearer ${token}`
+        },
+        body: JSON.stringify({
+            productId: product.id,
+            quantity: 1
+        })
+    })
+    .then(response => response.json())
+    .then(data => {
+        alert('Product added to cart!');
+    })
+    .catch(error => {
+        console.error('Error:', error);
+        alert('Failed to add product to cart');
+    });
+}
+
+// Initialize products when the page loads
+document.addEventListener('DOMContentLoaded', function() {
+    loadProducts('productListings');
+});
+
 // Export the data for use in other JavaScript files
 if (typeof module !== 'undefined' && module.exports) {
     module.exports = { users, products };
