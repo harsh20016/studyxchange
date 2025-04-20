@@ -66,95 +66,62 @@
             </nav>
         </div>
     </section>
-
-    <!-- Product Detail Section -->
-    <section class="product-detail-section">
-        <div class="container">
-            <div class="row">
-                <div class="col-lg-8">
-                    <div class="product-detail-container">
-                        <div class="product-detail-image">
-                            <i id="productImageIcon" class="fas fa-book fa-5x"></i>
-                        </div>
-                        <div class="product-detail-info">
-                            <h1 class="product-detail-title" id="productTitle">Product Title</h1>
-                            <div class="product-detail-price" id="productPrice">$0.00</div>
-                            
-                            <div class="product-detail-meta">
-                                <div class="meta-item">
-                                    <i class="fas fa-tag"></i>
-                                    <span id="productCategory">Category</span>
-                                </div>
-                                <div class="meta-item">
-                                    <i class="fas fa-tag"></i>
-                                    <span id="productSubcategory">Subcategory</span>
-                                </div>
-                                <div class="meta-item">
-                                    <i class="fas fa-check-circle"></i>
-                                    <span id="productCondition">Condition</span>
-                                </div>
-                                <div class="meta-item">
-                                    <i class="fas fa-map-marker-alt"></i>
-                                    <span id="productLocation">Location</span>
-                                </div>
-                                <div class="meta-item">
-                                    <i class="far fa-calendar-alt"></i>
-                                    <span id="productDate">Date</span>
-                                </div>
-                            </div>
-                            
-                            <div class="product-detail-description">
-                                <h4>Description</h4>
-                                <p id="productDescription">Product description will appear here.</p>
-                            </div>
-                            
-                            <div class="contact-options">
-                                <button class="btn btn-primary" id="contactSellerBtn">
-                                    <i class="fas fa-envelope"></i> Contact Seller
-                                </button>
-                                <button class="btn btn-outline-primary" id="addToFavoritesBtn">
-                                    <i class="far fa-heart"></i> Add to Favorites
-                                </button>
-                            </div>
-                        </div>
+<!-- Product Detail Section -->
+<section class="product-detail-section">
+    <div class="container">
+        <div class="row">
+            <div class="col-lg-8">
+                <div class="product-detail-container">
+                    <div class="product-detail-image">
+                        <!-- Dynamically update the product image -->
+                        <img id="productImage" class="img-fluid" alt="Product Image" />
                     </div>
-                </div>
-                
-                <div class="col-lg-4">
-                    <div class="seller-info-card">
-                        <div class="seller-info-header">
-                            <div class="seller-avatar">
-                                <i class="fas fa-user"></i>
+                    <div class="product-detail-info">
+                        <h1 class="product-detail-title" id="productTitle">Product Title</h1>
+                        <div class="product-detail-price" id="productPrice">$0.00</div>
+                        
+                        <div class="product-detail-meta">
+                            <div class="meta-item">
+                                <i class="fas fa-tag"></i>
+                                <span id="productCategory">Category</span>
                             </div>
-                            <div class="seller-details">
-                                <div class="seller-name" id="sellerName">Seller Name</div>
-                                <div class="seller-member-since" id="sellerMemberSince">Member since</div>
+                            <div class="meta-item">
+                                <i class="fas fa-tag"></i>
+                                <span id="productSubcategory">Subcategory</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-check-circle"></i>
+                                <span id="productCondition">Condition</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="fas fa-map-marker-alt"></i>
+                                <span id="productLocation">Location</span>
+                            </div>
+                            <div class="meta-item">
+                                <i class="far fa-calendar-alt"></i>
+                                <span id="productDate">Date</span>
                             </div>
                         </div>
-                        <a href="profile.html" class="btn btn-outline-secondary w-100">
-                            <i class="fas fa-user"></i> View Profile
-                        </a>
-                    </div>
-                    
-                    <div class="safety-tips-card mt-4">
-                        <div class="card">
-                            <div class="card-header bg-warning text-dark">
-                                <i class="fas fa-exclamation-triangle me-2"></i> Safety Tips
-                            </div>
-                            <div class="card-body">
-                                <ul class="list-unstyled">
-                                    <li class="mb-2"><i class="fas fa-check-circle me-2 text-success"></i> Meet in a public place</li>
-                                    <li class="mb-2"><i class="fas fa-check-circle me-2 text-success"></i> Check the item before paying</li>
-                                    <li class="mb-2"><i class="fas fa-check-circle me-2 text-success"></i> Don't share personal information</li>
-                                    <li><i class="fas fa-check-circle me-2 text-success"></i> Report suspicious activity</li>
-                                </ul>
-                            </div>
+                        
+                        <div class="product-detail-description">
+                            <h4>Description</h4>
+                            <p id="productDescription">Product description will appear here.</p>
+                        </div>
+                        
+                        <div class="contact-options">
+                            <button class="btn btn-primary" id="contactSellerBtn">
+                                <i class="fas fa-envelope"></i> Contact Seller
+                            </button>
+                            <button class="btn btn-outline-primary" id="addToFavoritesBtn">
+                                <i class="far fa-heart"></i> Add to Favorites
+                            </button>
                         </div>
                     </div>
                 </div>
             </div>
         </div>
-    </section>
+    </div>
+</section>
 
     <!-- Similar Products Section -->
     <section class="similar-products">
@@ -222,26 +189,38 @@
     <script src="../js/app.js"></script>
     <script>
         // Set the category link in the breadcrumb
-        document.addEventListener('DOMContentLoaded', function() {
+        document.addEventListener('DOMContentLoaded', function () {
+            // Get the product ID from the URL parameters
             const urlParams = new URLSearchParams(window.location.search);
-            const productId = parseInt(urlParams.get('id'));
-            
+            const productId = parseInt(urlParams.get('id')); // Ensure it's an integer
+        
             if (productId) {
+                // Find the product by ID in your mock data
                 const product = products.find(p => p.id === productId);
+                
                 if (product) {
-                    const categoryLink = document.getElementById('categoryLink');
-                    if (categoryLink) {
-                        categoryLink.href = `category.html?category=${product.category}`;
-                        categoryLink.textContent = product.category.charAt(0).toUpperCase() + product.category.slice(1);
-                    }
-                    
-                    const productBreadcrumb = document.getElementById('productBreadcrumb');
-                    if (productBreadcrumb) {
-                        productBreadcrumb.textContent = product.title;
+                    // Set the product title, price, description, etc.
+                    document.getElementById('productTitle').textContent = product.title;
+                    document.getElementById('productPrice').textContent = `$${product.price.toFixed(2)}`;
+                    document.getElementById('productCategory').textContent = product.category;
+                    document.getElementById('productSubcategory').textContent = product.subcategory;
+                    document.getElementById('productCondition').textContent = product.condition;
+                    document.getElementById('productLocation').textContent = product.location;
+                    document.getElementById('productDate').textContent = product.date;
+                    document.getElementById('productDescription').textContent = product.description;
+        
+                    // Dynamically set the product image
+                    const productImage = document.getElementById('productImage');
+                    if (product.images && product.images.length > 0) {
+                        productImage.src = product.images[0]; // Set the first image from the array
+                    } else {
+                        // Fallback if no image exists
+                        productImage.src = 'https://via.placeholder.com/500'; // You can set a custom placeholder
                     }
                 }
             }
         });
+        
     </script>
 </body>
 </html>
