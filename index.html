@@ -1,0 +1,289 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>StudyXchange - Study Material Exchange for Students</title>
+    <!-- Bootstrap CSS -->
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/css/bootstrap.min.css" rel="stylesheet">
+    <!-- Font Awesome -->
+    <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/6.4.0/css/all.min.css">
+    <!-- Google Fonts -->
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800&display=swap" rel="stylesheet">
+    <!-- Custom CSS -->
+    <link rel="stylesheet" href="css/modern.css">
+    <link rel="stylesheet" href="css/styles.css">
+    <link rel="stylesheet" href="css/responsive.css">
+</head>
+<body>
+    <!-- Header Section -->
+    <header>
+        <nav class="navbar navbar-expand-lg navbar-light bg-light fixed-top">
+            <div class="container">
+                <a class="navbar-brand" href="index.html">
+                    <span class="brand-name">StudyXchange</span>
+                </a>
+                <button class="navbar-toggler" type="button" data-bs-toggle="collapse" data-bs-target="#navbarNav" aria-controls="navbarNav" aria-expanded="false" aria-label="Toggle navigation">
+                    <span class="navbar-toggler-icon"></span>
+                </button>
+                <div class="collapse navbar-collapse" id="navbarNav">
+                    <div class="search-container mx-auto">
+                        <div class="input-group">
+                            <input type="text" id="searchInput" class="form-control" placeholder="Search study materials...">
+                            <button class="btn btn-primary" type="button" id="searchButton">
+                                <i class="fas fa-search"></i>
+                            </button>
+                        </div>
+                    </div>
+                    <ul class="navbar-nav ms-auto">
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/login.html">
+                                <i class="fas fa-user"></i> Login
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/post-ad.html">
+                                <i class="fas fa-plus-circle"></i> Post Ad
+                            </a>
+                        </li>
+                        <li class="nav-item">
+                            <a class="nav-link" href="pages/profile.html">
+                                <i class="fas fa-user-circle"></i> My Account
+                            </a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </nav>
+    </header>
+
+    <!-- Categories Section -->
+    <section class="categories-section">
+        <div class="container">
+            <div class="row category-icons text-center">
+                <div class="col-4 col-md-2">
+                    <a href="pages/category.html?category=textbooks" class="category-link">
+                        <div class="category-icon">
+                            <i class="fas fa-book"></i>
+                        </div>
+                        <span>Textbooks</span>
+                    </a>
+                </div>
+                <div class="col-4 col-md-2">
+                    <a href="pages/category.html?category=notes" class="category-link">
+                        <div class="category-icon">
+                            <i class="fas fa-sticky-note"></i>
+                        </div>
+                        <span>Notes</span>
+                    </a>
+                </div>
+                <div class="col-4 col-md-2">
+                    <a href="pages/category.html?category=stationery" class="category-link">
+                        <div class="category-icon">
+                            <i class="fas fa-pencil-alt"></i>
+                        </div>
+                        <span>Stationery</span>
+                    </a>
+                </div>
+                <div class="col-4 col-md-2">
+                    <a href="pages/category.html?category=electronics" class="category-link">
+                        <div class="category-icon">
+                            <i class="fas fa-calculator"></i>
+                        </div>
+                        <span>Electronics</span>
+                    </a>
+                </div>
+                <div class="col-4 col-md-2">
+                    <a href="pages/category.html?category=equipment" class="category-link">
+                        <div class="category-icon">
+                            <i class="fas fa-microscope"></i>
+                        </div>
+                        <span>Lab Equipment</span>
+                    </a>
+                </div>
+                <div class="col-4 col-md-2">
+                    <a href="pages/category.html?category=courses" class="category-link">
+                        <div class="category-icon">
+                            <i class="fas fa-graduation-cap"></i>
+                        </div>
+                        <span>Course Materials</span>
+                    </a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Banner Section -->
+    <section class="banner-section">
+        <div class="container">
+            <div class="banner">
+                <div class="banner-content">
+                    <h1>Exchange Study Materials</h1>
+                    <p>Buy, sell, or exchange study materials with other students</p>
+                    <a href="pages/post-ad.html" class="btn btn-primary">Post Your Ad Now</a>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Filter Section -->
+    <section class="filter-section">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-3">
+                    <div class="filter-box">
+                        <h4>Filters</h4>
+                        <div class="filter-group">
+                            <h5>Categories</h5>
+                            <div class="form-check">
+                                <input class="form-check-input filter-category" type="checkbox" value="textbooks" id="textbooks">
+                                <label class="form-check-label" for="textbooks">Textbooks</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input filter-category" type="checkbox" value="notes" id="notes">
+                                <label class="form-check-label" for="notes">Notes</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input filter-category" type="checkbox" value="stationery" id="stationery">
+                                <label class="form-check-label" for="stationery">Stationery</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input filter-category" type="checkbox" value="electronics" id="electronics">
+                                <label class="form-check-label" for="electronics">Electronics</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input filter-category" type="checkbox" value="equipment" id="equipment">
+                                <label class="form-check-label" for="equipment">Lab Equipment</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input filter-category" type="checkbox" value="courses" id="courses">
+                                <label class="form-check-label" for="courses">Course Materials</label>
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <h5>Price Range</h5>
+                            <div class="price-slider">
+                                <input type="range" class="form-range" min="0" max="1000" id="priceRange">
+                                <div class="price-range-values">
+                                    <span id="priceRangeValue">$0 - $1000</span>
+                                </div>
+                            </div>
+                        </div>
+
+                        <div class="filter-group">
+                            <h5>Condition</h5>
+                            <div class="form-check">
+                                <input class="form-check-input filter-condition" type="checkbox" value="new" id="conditionNew">
+                                <label class="form-check-label" for="conditionNew">New</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input filter-condition" type="checkbox" value="like-new" id="conditionLikeNew">
+                                <label class="form-check-label" for="conditionLikeNew">Like New</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input filter-condition" type="checkbox" value="good" id="conditionGood">
+                                <label class="form-check-label" for="conditionGood">Good</label>
+                            </div>
+                            <div class="form-check">
+                                <input class="form-check-input filter-condition" type="checkbox" value="fair" id="conditionFair">
+                                <label class="form-check-label" for="conditionFair">Fair</label>
+                            </div>
+                        </div>
+
+                        <button class="btn btn-primary w-100 mt-3" id="applyFilters">Apply Filters</button>
+                    </div>
+                </div>
+
+                <div class="col-md-9">
+                    <!-- Sort Options -->
+                    <div class="sort-options mb-3">
+                        <div class="d-flex justify-content-between align-items-center">
+                            <h4 class="mb-0">Featured Listings</h4>
+                            <div class="dropdown">
+                                <button class="btn btn-outline-secondary dropdown-toggle" type="button" id="sortDropdown" data-bs-toggle="dropdown" aria-expanded="false">
+                                    Sort By
+                                </button>
+                                <ul class="dropdown-menu" aria-labelledby="sortDropdown">
+                                    <li><a class="dropdown-item sort-option" href="#" data-sort="newest">Newest First</a></li>
+                                    <li><a class="dropdown-item sort-option" href="#" data-sort="oldest">Oldest First</a></li>
+                                    <li><a class="dropdown-item sort-option" href="#" data-sort="price-low">Price Low to High</a></li>
+                                    <li><a class="dropdown-item sort-option" href="#" data-sort="price-high">Price High to Low</a></li>
+                                </ul>
+                            </div>
+                        </div>
+                    </div>
+
+                    <!-- Product Listings -->
+                    <div class="row" id="productListings">
+                        <!-- Product listings will be dynamically loaded here -->
+                    </div>
+
+                    <!-- Load More Button -->
+                    <div class="text-center mt-4 mb-5">
+                        <button class="btn btn-outline-primary" id="loadMoreBtn">Load More</button>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <!-- Footer Section -->
+    <footer class="bg-dark text-white py-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-4 mb-3">
+                    <h5>StudyXchange</h5>
+                    <p>The best platform for students to buy, sell, and exchange study materials.</p>
+                </div>
+                <div class="col-md-2 mb-3">
+                    <h5>Quick Links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="index.html" class="text-white">Home</a></li>
+                        <li><a href="pages/category.html" class="text-white">Categories</a></li>
+                        <li><a href="pages/post-ad.html" class="text-white">Post Ad</a></li>
+                        <li><a href="pages/profile.html" class="text-white">My Account</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <h5>Popular Categories</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="pages/category.html?category=textbooks" class="text-white">Textbooks</a></li>
+                        <li><a href="pages/category.html?category=notes" class="text-white">Notes</a></li>
+                        <li><a href="pages/category.html?category=electronics" class="text-white">Electronics</a></li>
+                        <li><a href="pages/category.html?category=courses" class="text-white">Course Materials</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-3 mb-3">
+                    <h5>Contact Us</h5>
+                    <ul class="list-unstyled">
+                        <li><i class="fas fa-envelope me-2"></i> support@studyxchange.com</li>
+                        <li><i class="fas fa-phone me-2"></i> +1 234 567 8900</li>
+                        <li class="mt-3">
+                            <a href="#" class="text-white me-2"><i class="fab fa-facebook-f"></i></a>
+                            <a href="#" class="text-white me-2"><i class="fab fa-twitter"></i></a>
+                            <a href="#" class="text-white me-2"><i class="fab fa-instagram"></i></a>
+                            <a href="#" class="text-white me-2"><i class="fab fa-linkedin-in"></i></a>
+                        </li>
+                    </ul>
+                </div>
+            </div>
+            <hr>
+            <div class="text-center">
+                <p>&copy; 2023 StudyXchange. All rights reserved.</p>
+            </div>
+        </div>
+    </footer>
+
+    <!-- Bootstrap JS Bundle with Popper -->
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.0/dist/js/bootstrap.bundle.min.js"></script>
+    <!-- Custom JavaScript -->
+    <script src="js/data.js"></script>
+    <script src="js/search.js"></script>
+    <script src="js/favorites.js"></script>
+    <script src="js/login.js"></script>
+    <script src="js/app.js"></script>
+</body>
+</html>
