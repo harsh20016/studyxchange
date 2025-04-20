@@ -9,7 +9,7 @@ const app = express();
 
 // Middleware
 app.use(cors({
-    origin: ['http://localhost:8080', 'https://studyxchange.netlify.app'],
+    origin: ['http://localhost:5000', 'https://harsh20016.github.io'],
     credentials: true
 }));
 app.use(express.json());
@@ -144,6 +144,81 @@ app.get('/api/admin/dashboard', verifyToken, async (req, res) => {
         });
     } catch (error) {
         res.status(500).json({ message: error.message });
+    }
+});
+
+// Product Routes
+app.post('/api/products', verifyToken, async (req, res) => {
+    try {
+        const product = new Listing({
+            ...req.body,
+            seller: req.user.id
+        });
+        await product.save();
+        res.status(201).send(product);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+});
+
+app.get('/api/products', async (req, res) => {
+    try {
+        const products = await Listing.find().populate('seller', 'name');
+        res.send(products);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+// Cart Routes
+app.post('/api/cart', verifyToken, async (req, res) => {
+    try {
+        let cart = await Cart.findOne({ user: req.user.id });
+        if (!cart) {
+            cart = new Cart({ user: req.user.id, items: [] });
+        }
+        cart.items.push(req.body);
+        await cart.save();
+        res.status(201).send(cart);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+});
+
+app.get('/api/cart', verifyToken, async (req, res) => {
+    try {
+        const cart = await Cart.findOne({ user: req.user.id }).populate('items.product');
+        res.send(cart);
+    } catch (error) {
+        res.status(500).send(error);
+    }
+});
+
+// Message Routes
+app.post('/api/messages', verifyToken, async (req, res) => {
+    try {
+        const message = new Message({
+            ...req.body,
+            sender: req.user.id
+        });
+        await message.save();
+        res.status(201).send(message);
+    } catch (error) {
+        res.status(400).send(error);
+    }
+});
+
+app.get('/api/messages/:userId', verifyToken, async (req, res) => {
+    try {
+        const messages = await Message.find({
+            $or: [
+                { sender: req.user.id, receiver: req.params.userId },
+                { sender: req.params.userId, receiver: req.user.id }
+            ]
+        }).sort('createdAt');
+        res.send(messages);
+    } catch (error) {
+        res.status(500).send(error);
     }
 });
 
